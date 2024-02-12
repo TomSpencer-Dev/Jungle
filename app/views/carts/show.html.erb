@@ -5,6 +5,7 @@
   </header>
 
   <div class="panel panel-default items">
+  <% if cart.size > 0 %>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -14,6 +15,7 @@
           <th>Price</th>
         </tr>
       </thead>
+      
       <tbody>
         <% enhanced_cart.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
@@ -47,6 +49,11 @@
         </script>
       <% end %>
     </div>
+  <% else %>
+    <h1 class="alert alert-secondary" role="alert"> Your cart is empty <br>    
+      <a class="navbar-brand" href="<%= root_path %>" class="alert-link">Homepage</a>
+    </h1>
+  <% end %>
   </div>
 
 </section>
