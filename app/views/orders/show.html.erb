@@ -4,6 +4,35 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+  <!-- possibly other table headers -->
+  <% @order.line_items.each do |line_item| %>
+    <%= render 'item', product: line_item.product, quantity: line_item.quantity %>
+  <% end %>
+<tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <% subtotal = @order.line_items.sum do |line_item| %>
+            <% line_item.total_price %>
+            <% end %>
+            <p>Subtotal: <%= humanized_money_with_symbol(subtotal) %></p>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="5">
+            EMAIL: <%=  @order.email %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  </div>
+
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
