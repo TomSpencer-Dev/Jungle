@@ -36,7 +36,11 @@
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown"> %>
             <% Category.all.each do |category| %>
             <li class="nav-item">
+              <% if category.name == 'About' %>
+              <%= link_to category.name, about_path, class: "nav-link" %>
+              <% else %>
               <%= link_to category.name, category, class: "nav-link" %>
+              <% end %>
             </li>
             <% end %>
           <%# </ul>
