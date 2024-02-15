@@ -1,11 +1,26 @@
 <h1>Signup!</h1>
 
 <%= form_for :user, url: '/users' do |f| %>
-
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
-
+  <table>
+    <tr>
+      <th>Name:</th>
+      <th style = "padding-top: 20px; padding-left: 20px;"><%= f.text_field :name %></th>
+    </tr>
+    <tr >
+      <th>Email:</th>
+      <th style = "padding-top: 20px; padding-left: 20px;"><%= f.text_field :email %></th>
+      </tr>
+    <tr>
+      <th>Password:</th>
+      <th style = "padding-top: 20px; padding-left: 20px;"><%= f.password_field :password %></th>
+    </tr>
+    <tr>
+      <th>Password Confirmation:</th>
+      <th style = "padding-top: 20px; padding-left: 20px;"><%= f.password_field :password_confirmation %></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th style="text-align: center; padding-top: 20px;"><%= f.submit "Submit" %></th>
+    </tr>
+  <table>
 <% end %>
