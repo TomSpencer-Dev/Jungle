@@ -51,4 +51,18 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe '.authenticate_with_credentials' do
+    # Spec for handling extra spaces around the email address
+    it 'authenticates successfully even with extra spaces around the email address' do
+      user = User.create!(first_name: 'Carl', last_name: "Simpson", email: 'test@example.com', password: 'password123', password_confirmation: 'password123')
+      expect(User.authenticate_with_credentials('  test@example.com  ', 'password123')).to eq(user)
+    end
+
+    # Spec for handling email addresses with different cases
+    it 'authenticates successfully even with different cases in the email address' do
+      user = User.create!(first_name: 'Carl', last_name: "Simpson", email: 'test@example.com', password: 'password123', password_confirmation: 'password123')
+      expect(User.authenticate_with_credentials('TeST@eXaMpLe.CoM', 'password123')).to eq(user)
+    end
+  end
 end
